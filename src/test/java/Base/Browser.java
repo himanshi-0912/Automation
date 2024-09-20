@@ -12,26 +12,27 @@ import java.io.IOException;
 
 public class Browser {
 WebDriver driver;
-
+Config ref;
 
 @Test
     public void launch() throws IOException {
 
-    Config ref = new Config(); //to access the methods of config class but indirectly we are invoking the constructor
+     ref = new Config(); //to access the methods of config class but indirectly we are invoking the constructor
 
+    //browser key
 
-        if(ref.test().equals("chrome")){
+        if(ref.test("Browser").equals("chrome")){
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
             driver.manage().window().maximize();
 
-        } else if (ref.test().equals("firefox")) {
+        } else if (ref.test("Browser").equals("firefox")) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
             driver.manage().window().maximize();
         }
 
-        else if (ref.test().equals("edge")){
+        else if (ref.test("Browser").equals("edge")){
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
             driver.manage().window().maximize();
@@ -40,5 +41,6 @@ WebDriver driver;
 
 
     }
+
 
 }
